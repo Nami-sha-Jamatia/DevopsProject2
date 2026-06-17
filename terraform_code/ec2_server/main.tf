@@ -252,6 +252,7 @@ resource "aws_instance" "my-ec2" {
       "echo 'Jenkins Initial Password: '$pass''",
       "echo 'Access SonarQube Server here --> http://'$ip':9000'",
       "echo 'SonarQube Username & Password: admin'",
+      #testing
     ]
   }
 }
