@@ -1,6 +1,6 @@
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.1"
+  version = "~> 20.0"
 
   cluster_name                   = local.name
   cluster_endpoint_public_access = true
@@ -21,16 +21,16 @@ module "eks" {
   subnet_ids               = module.vpc.private_subnets
 
   eks_managed_node_groups = {
-    panda-node = {
+    devops-project = {
       min_size     = 2
       max_size     = 4
       desired_size = 2
 
-      instance_types = ["t2.medium"]
-      capacity_type  = "SPOT"
+    instance_types = ["t3.small"]
+    capacity_type  = "ON_DEMAND"
 
       tags = {
-        ExtraTag = "Panda_Node"
+        ExtraTag = "Devops_Project"
       }
     }
   }
